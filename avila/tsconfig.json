@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,12 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "avila/schemas/product.js", "avila/tailwind.config.js", "components/Content/index.jsx", "pages/index.jsx", "components/Card/index.jsx", "pages/api/hello.js", "pages/_document.jsx", "pages/_app.jsx", "components/Header/index.jsx"],
+  "include": ["**/*.ts", "**/*.tsx", "schemas/product.js", "tailwind.config.js"],
   "exclude": ["node_modules"]
 }
