@@ -1,8 +1,12 @@
 import React from "react";
 import { ShoppingBagIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { useStateContext } from "@/context/StateContext";
+import Cart from '@/components/Cart'
 
 const Header = () => {
+  const { showCart, setShowCart, totalQuantities } = useStateContext();
+
   return (
     <div
       className="backdrop-blur-xl bg-white bg-opacity-80 border-b-gray-300 border-b flex items-center 
@@ -27,12 +31,16 @@ const Header = () => {
           className="text-gray-400 mx-2 hover:text-pink-500 hover:scale-110 transition ease-in-out cursor-pointer"
         />
       </div>
-      <div className="relative h-10 items-center flex cursor-pointer hover:scale-110 ease-in-out duration-100">
+      <div
+        className="relative h-10 items-center flex cursor-pointer hover:scale-110 ease-in-out duration-100"
+        onClick={() => setShowCart(true)}
+      >
         <ShoppingBagIcon width={30} className="z-10" />
         <div className="rounded-full bg-red-500 text-white absolute bottom-0 right-0 px-1 z-20 text-sm">
-          1
+          {totalQuantities}
         </div>
       </div>
+      {showCart && <Cart />}
     </div>
   );
 };
