@@ -6,7 +6,7 @@ import {useStateContext} from '@/context/StateContext'
 const GoodsDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = React.useState(0);
-  const {decQty, incQty, qty, size, setSize, onAdd} = useStateContext()
+  const {decQty, incQty, qty, size, setSize, onAdd, setShowCart} = useStateContext()
 
 
   return (
@@ -78,6 +78,7 @@ const GoodsDetails = ({ product, products }) => {
             <button
               className="p-2.5 shadow-lg rounded-xl bg-red-600 text-white border"
               type="button"
+              onClick={() => setShowCart(true)}
             >
               Byu Now
             </button>

@@ -2,11 +2,34 @@ import React from "react";
 import { useStateContext } from "@/context/StateContext";
 import { ChevronLeftIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import CartItem from "@/components/CartItem";
+import getStripe from "@/Lib/getStripe";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const Cart = () => {
   const cartRef = React.useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity } =
+  const { totalPrice, totalQuantities, cartItems, setShowCart } =
     useStateContext();
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    })
+
+    if(response.statusCode === 500) return;
+    
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    stripe.redirectToCheckout({sessionId: data.id });
+  };
 
   return (
     <div ref={cartRef}>
@@ -30,14 +53,18 @@ const Cart = () => {
           {cartItems.length >= 1 ? (
             <div className="">
               {cartItems.map((item, i) => (
-                <CartItem {...item} key={item._id}/>
+                <CartItem {...item} key={item._id} />
               ))}
               <div className=" absolute grid bottom-5 w-[85%] gap-2">
                 <div className="flex w-full justify-between">
                   <h3 className="font-semibold">Subtotal:</h3>
                   <h3 className="font-semibold">${totalPrice}</h3>
                 </div>
-                <button type="button" onClick="" className="bg-red-500 text-white w-full rounded-xl py-2 uppercase">
+                <button
+                  type="button"
+                  onClick={handleCheckout}
+                  className="bg-red-500 text-white w-full rounded-xl py-2 uppercase"
+                >
                   Pay with Stripe
                 </button>
               </div>
