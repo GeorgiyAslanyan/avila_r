@@ -5,7 +5,7 @@ import CartItem from "@/components/CartItem";
 
 const Cart = () => {
   const cartRef = React.useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } =
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity } =
     useStateContext();
 
   return (
@@ -15,7 +15,7 @@ const Cart = () => {
           className="bg-black bg-opacity-30 z-10 col-span-2"
           onClick={() => setShowCart(false)}
         />
-        <div className="z-20 col-span-1 bg-white p-10">
+        <div className="z-20 col-span-1 bg-white p-10 relative">
           <button
             type="button"
             onClick={() => setShowCart(false)}
@@ -28,19 +28,29 @@ const Cart = () => {
             </span>
           </button>
           {cartItems.length >= 1 ? (
-            <div>
+            <div className="">
               {cartItems.map((item, i) => (
-                <CartItem {...item} key={item._id} />
+                <CartItem {...item} key={item._id}/>
               ))}
-              <div>
-
+              <div className=" absolute grid bottom-5 w-[85%] gap-2">
+                <div className="flex w-full justify-between">
+                  <h3 className="font-semibold">Subtotal:</h3>
+                  <h3 className="font-semibold">${totalPrice}</h3>
+                </div>
+                <button type="button" onClick="" className="bg-red-500 text-white w-full rounded-xl py-2 uppercase">
+                  Pay with Stripe
+                </button>
               </div>
             </div>
           ) : (
             <div className="place-content-center justify-items-center h-[80%] grid my-10">
               <ShoppingBagIcon width={100} />
               <h3>Your shopping bag is empty</h3>
-              <button className="rounded-xl px-5 py-2 mt-3 hover:scale-110 ease-in-out duration-200 bg-red-500 text-white w-full" type="button" onClick={() => setShowCart(false)}>
+              <button
+                className="rounded-xl px-5 py-2 mt-3 hover:scale-110 ease-in-out duration-200 bg-red-500 text-white w-full"
+                type="button"
+                onClick={() => setShowCart(false)}
+              >
                 Continue shopping
               </button>
             </div>
