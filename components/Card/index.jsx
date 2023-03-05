@@ -20,8 +20,8 @@ const Card = ({image, name, price, slug}) => {
       </Link>
       <div className="flex pt-2.5 text-left justify-between">
         <div>
-            <p className="font-medium text-sm text-gray-400 m-0">Цена:</p>
-            <p className="font-medium text-sm mt-1">{price} руб.</p>
+            <p className="font-medium text-sm text-gray-400 m-0">Price:</p>
+            <p className="font-medium text-sm mt-1">${price}</p>
         </div>
         <HeartIcon width={20} className="mr-4 hover:text-pink-500 ease-in-out duration-200 hover:scale-125 cursor-pointer"/>
       </div>

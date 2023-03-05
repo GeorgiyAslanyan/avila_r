@@ -35,7 +35,7 @@ const GoodsDetails = ({ product, products }) => {
         <div className="text-left w-3/4 pt-5">
           <h1 className="font-bold text-4xl">{name}</h1>
           <p className="my-4">{details}</p>
-          <div className="grid grid-cols-4 gap-2.5">
+          {/* <div className="grid grid-cols-4 gap-2.5">
             {["xs", "s", "m", "l", "xl", "XXl", "XXXl", "4xl"].map((el, i) => (
               <button
                 key={el}
@@ -47,7 +47,7 @@ const GoodsDetails = ({ product, products }) => {
                 {el}
               </button>
             ))}
-          </div>
+          </div> */}
           <div className="flex mt-3">
             <div className="flex p-2  mr-3 shadow-lg rounded-xl border mb-2.5">
               <button
@@ -67,7 +67,7 @@ const GoodsDetails = ({ product, products }) => {
               </button>
             </div>
             <h2 className="my-0 font-bold text-[1.5rem]">
-              {price * qty} руб.
+              ${price * qty}
             </h2>
           </div>
 
@@ -86,7 +86,7 @@ const GoodsDetails = ({ product, products }) => {
         </div>
       </div>
       <div>
-        <h2>Recomendations</h2>
+        <h2 className="font-bold text-center">Recomendations</h2>
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
             {products.map((el) => (
