@@ -5,7 +5,7 @@ import { urlFor } from "@/Lib/client";
 const Content = ({ products, banner }) => {
 
   return (
-    <div className="">
+    <div className="col-span-5">
       {/* <div className="w-full">
         <img src={urlFor(banner[0].image && banner[0].image)} alt="banner" />
         {banner.desc}
