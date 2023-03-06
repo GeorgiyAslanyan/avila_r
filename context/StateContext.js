@@ -11,6 +11,7 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = React.useState(0);
   const [qty, setQty] = React.useState(1);
   const [size, setSize] = React.useState(0);
+  const [showCategories, setShowCategories] = React.useState(false);
 
   let foundProduct;
   let index;
@@ -99,6 +100,8 @@ export const StateContext = ({ children }) => {
         onAdd,
         toggleCartItemQuantity,
         onRemove,
+        showCategories,
+        setShowCategories
       }}
     >
       {children}

@@ -6,8 +6,9 @@ export default function Category({ products, categories }) {
   // console.log(products, categories);
   return (
     <>
-      <div className="mx-10 my-5 grid grid-cols-6">
+      <div className="lg:mr-10 m-5 md:mr-5 grid grid-cols-4 xl:grid-cols-6 lg:grid-cols-5 ">
         <Categories categories={categories} />
+        <div className="hidden md:block"/>
         <Content products={products} />
       </div>
     </>

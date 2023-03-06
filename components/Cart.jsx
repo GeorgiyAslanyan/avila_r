@@ -33,12 +33,12 @@ const Cart = () => {
 
   return (
     <div ref={cartRef}>
-      <div className="w-full absolute top-0 left-0 h-[100vh] grid grid-cols-3">
+      <div className="w-full absolute top-0 left-0 h-[100vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 xl:grid-cols-3">
         <div
-          className="bg-black bg-opacity-30 z-10 col-span-2"
+          className="bg-black bg-opacity-30 z-10 hidden md:block md:col-span-1 lg:col-span-3 xl:col-span-2"
           onClick={() => setShowCart(false)}
         />
-        <div className="z-20 col-span-1 bg-white p-10 relative">
+        <div className="z-20 md:col-span-1 lg:col-span-2 xl:col-span-1 bg-white p-5 sm:p-10 relative">
           <button
             type="button"
             onClick={() => setShowCart(false)}

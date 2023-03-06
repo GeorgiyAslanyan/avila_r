@@ -13,7 +13,7 @@ const Layout = ({children}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="mx-10 my-5 min-h-screen">
+      <main className=" min-h-screen">
         {children}
       </main>
       <Footer />

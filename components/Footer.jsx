@@ -3,11 +3,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="border-t border-t-gray-300 h-14 content-center w-full grid px-10">
+    <div className="border-t border-t-gray-300 h-14 content-center w-full grid px-10 z-40 relative bg-white">
       <div className="right-0">
-        <Link href="https://georgy-aslanyan.vercel.app/">
-          <p>© 2023. by Georgy Aslanyan</p>
-        </Link>
+        <a target="_blank" href="https://georgy-aslanyan.vercel.app/">
+          <p className="font-semibold">© 2023. by Georgy Aslanyan</p>
+        </a>
       </div>
     </div>
   );

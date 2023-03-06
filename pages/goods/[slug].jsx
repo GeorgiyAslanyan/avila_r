@@ -2,6 +2,7 @@ import React from "react";
 import { urlFor, client } from "@/Lib/client";
 import Card from "@/components/Card";
 import {useStateContext} from '@/context/StateContext'
+import { toast } from "react-hot-toast";
 
 const GoodsDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
@@ -11,43 +12,17 @@ const GoodsDetails = ({ product, products }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2">
-        <div className="my-0 mx-auto px-5 pt-5 relative">
+      <div className="grid md:grid-cols-2 pb-2.5">
+        <div className="my-0 mx-auto md:pr-5 md:pt-5 relative">
           <img
             src={urlFor(image && image[index])}
             alt=""
-            className="h-[395px] object-cover w-[500px] rounded-xl"
+            className="md:h-[395px] h-[300px] object-cover md:w-[500px] w-[768px] md:rounded-xl"
           />
-          <div className="grid grid-cols-4 w-[500px]">
-            {image?.map((item, i) => (
-              <img
-                key={i}
-                src={urlFor(item)}
-                alt=""
-                onMouseEnter={() => setIndex(i)}
-                className={`cursor-pointer ${
-                  i === index ? "grayscale-0" : "grayscale"
-                } hover:grayscale-0 h-[84px] mt-2.5 mb-5 object-cover w-full`}
-              />
-            ))}
-          </div>
         </div>
-        <div className="text-left w-3/4 pt-5">
+        <div className="text-left w-full lg:w-3/4 pt-5 md:pr-5 px-5 md:pl-0">
           <h1 className="font-bold text-4xl">{name}</h1>
           <p className="my-4">{details}</p>
-          {/* <div className="grid grid-cols-4 gap-2.5">
-            {["xs", "s", "m", "l", "xl", "XXl", "XXXl", "4xl"].map((el, i) => (
-              <button
-                key={el}
-                onClick={() => setSize(i)}
-                className={`cursor-pointer font-semibold outline-none p-2.5 uppercase ${
-                  size === i ? "bg-red-600 text-white" : "bg-white"
-                } shadow-lg rounded-xl border`}
-              >
-                {el}
-              </button>
-            ))}
-          </div> */}
           <div className="flex mt-3">
             <div className="flex p-2  mr-3 shadow-lg rounded-xl border mb-2.5">
               <button
@@ -71,7 +46,7 @@ const GoodsDetails = ({ product, products }) => {
             </h2>
           </div>
 
-          <div className="grid gap-8 grid-cols-2">
+          <div className="grid presm:gap-8 gap-4 presm:grid-cols-2">
             <button className="p-2.5 shadow-lg rounded-xl border" type="button" onClick={() => onAdd(product, qty)}>
               Add to cart
             </button>
@@ -85,12 +60,12 @@ const GoodsDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-      <div>
-        <h2 className="font-bold text-center">Recomendations</h2>
+      <div className=" md:mx-5 mb-5">
+        <h2 className="font-bold text-left ml-5 text-xl my-5">Recomendations</h2>
         <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 presm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5">
             {products.map((el) => (
-              <Card {...el} key={el._id} />
+              <Card product={el} key={el._id} />
             ))}
           </div>
         </div>
@@ -122,8 +97,9 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params: { slug } }) => {
   const productQuery = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = `*[_type == "product"]`;
   const product = await client.fetch(productQuery);
+
+  const productsQuery = `*[_type == "product" && category[0]._ref == "${product.category[0]._ref}"] [0...5]`;
   const products = await client.fetch(productsQuery);
 
   return {
