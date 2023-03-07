@@ -3,7 +3,6 @@ import { client } from "@/Lib/client";
 import Categories from "@/components/Categories";
 
 export default function Category({ products, categories }) {
-  // console.log(products, categories);
   return (
     <>
       <div className="lg:mr-10 m-5 md:mr-5 grid grid-cols-4 xl:grid-cols-6 lg:grid-cols-5 ">

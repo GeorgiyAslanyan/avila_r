@@ -4,12 +4,10 @@ import {StateContext} from '@/context/StateContext'
 import { Toaster } from 'react-hot-toast'
 import { client } from "@/Lib/client";
 
-export default function App({ Component, pageProps, categories }) {
-  console.log(categories);
-
+export default function App({ Component, pageProps }) {
   return (
     <StateContext>
-      <Layout categories={categories}>
+      <Layout>
         <Toaster />
         <Component {...pageProps} />
       </Layout>

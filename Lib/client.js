@@ -1,6 +1,9 @@
 import sanityClient from "@sanity/client";
 import imageUrlBulder from '@sanity/image-url'
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_ID;
+
+
 export const client = sanityClient({
     projectId: 'bfujptk4',
     dataset: 'production',

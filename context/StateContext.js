@@ -1,4 +1,4 @@
-import { product } from "@/avila/schemas/product";
+import { product } from "@/schemas/product";
 import React from "react";
 import { toast } from "react-hot-toast";
 
