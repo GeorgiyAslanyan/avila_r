@@ -7,7 +7,7 @@ export default function Category({ products, categories }) {
     <>
       <div className="lg:mr-10 m-5 md:mr-5 grid grid-cols-4 xl:grid-cols-6 lg:grid-cols-5 ">
         <Categories categories={categories} />
-        <div className="hidden md:block"/>
+        <div className="hidden md:block" />
         <Content products={products} />
       </div>
     </>
@@ -34,10 +34,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
+  let categoryProductsQuery;
   const categoryIdQuery = `*[_type == "category" && slug.current == "${slug}"] {_id}`;
-  const categoryId = await client.fetch(categoryIdQuery);
+  const categoryId = await client
+    .fetch(categoryIdQuery)
+    .then(
+      (categoryProductsQuery = `*[_type == "product" && category[0]._ref == "${categoryId[0]._id}"]`)
+    );
 
-  const categoryProductsQuery = `*[_type == "product" && category[0]._ref == "${categoryId[0]._id}"]`;
   const products = await client.fetch(categoryProductsQuery);
 
   const categoryQuery = `*[_type == "category"]`;
