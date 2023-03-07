@@ -13,13 +13,13 @@ const CartItem = ({ image, name, price, quantity, slug, _id }) => {
         <img
           src={urlFor(image[0])}
           alt={name}
-          className="cover rounded-xl w-20 h-20 col-span-1 mr-1"
+          className="object-cover rounded-xl w-20 h-20 col-span-1 mr-1"
         />
       </Link>
       <div className="block col-span-2">
         <Link href={`/goods/${slug.current}`}>
           <p className="text-base pr-2">
-            {name} ({quantity} шт.)
+            {name}
           </p>
         </Link>
         <div className="flex pr-2 items-center justify-between">

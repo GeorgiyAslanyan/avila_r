@@ -33,7 +33,9 @@ const Header = () => {
         <Link href="/">
           <h1 className="text-xl font-medium leading-4">AVILA</h1>
         </Link>
-        <p className="text-[13px] font-normal text-gray-300">Internet shop</p>
+        <p className="text-[13px] font-normal text-gray-500">
+          Delightful culinary experience
+        </p>
       </div>
       <div className={`${showCart && "hidden"}  flex`}>
         <div
@@ -45,19 +47,21 @@ const Header = () => {
             {totalQuantities}
           </div>
         </div>
-        {router.pathname !== "/goods/[slug]" && (
-          <div
-            onClick={onCategoryMenu}
-            type="button"
-            className="md:hidden flex h-10 items-center cursor-pointer"
-          >
-            {showCategories ? (
-              <XMarkIcon width={30} />
-            ) : (
-              <Bars3Icon width={30} />
-            )}
-          </div>
-        )}
+        {router.pathname !== "/goods/[slug]" &&
+          router.pathname !== "/uccess" &&
+          router.pathname !== "/canceled" && (
+            <div
+              onClick={onCategoryMenu}
+              type="button"
+              className="md:hidden flex h-10 items-center cursor-pointer"
+            >
+              {showCategories ? (
+                <XMarkIcon width={30} />
+              ) : (
+                <Bars3Icon width={30} />
+              )}
+            </div>
+          )}
       </div>
 
       {showCart && <Cart />}
