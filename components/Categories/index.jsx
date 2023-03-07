@@ -18,7 +18,7 @@ const Categories = ({ categories }) => {
         <Link
           className={s.categoriesLink}
           key={category._id}
-          href={`/category/${category.slug.current}`}
+          href={`/category/${category._id}`}
         >
           <div className="rounded-xl flex items-center mb-2 h-14">
             <img

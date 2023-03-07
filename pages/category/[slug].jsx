@@ -23,7 +23,7 @@ export const getStaticPaths = async () => {
 
   const paths = categories.map((category) => ({
     params: {
-      slug: category[0]._id,
+      slug: category._id,
     },
   }));
 
@@ -34,10 +34,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const categoryIdQuery = `*[_type == "category" && slug.current == "${slug}"] {_id}`;
-  const categoryId = await client.fetch(categoryIdQuery);
+  // const categoryIdQuery = `*[_type == "category" && slug.current == "${slug}"] {_id}`;
+  // const categoryId = await client.fetch(categoryIdQuery);
 
-  const categoryProductsQuery = `*[_type == "product" && category[0]._ref == "${categoryId[0]._id}"]`;
+  const categoryProductsQuery = `*[_type == "product" && category[0]._ref == "${slug}"]`;
   const products = await client.fetch(categoryProductsQuery);
 
   const categoryQuery = `*[_type == "category"]`;
