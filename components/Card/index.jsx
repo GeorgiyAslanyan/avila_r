@@ -45,14 +45,14 @@ const Card = ({ product }) => {
         </div>
         {!add ? (
           <HeartIcon
-            type="button"
+             
             onClick={onAddClick}
             width={20}
             className="mr-4 hover:text-pink-500 ease-in-out duration-200 hover:scale-125 cursor-pointer"
           />
         ) : (
           <SolidHeartIcon
-            type="button"
+             
             onClick={onRemoveClick}
             width={20}
             className="mr-4 hover:text-pink-500 ease-in-out duration-200 hover:scale-125 cursor-pointer"

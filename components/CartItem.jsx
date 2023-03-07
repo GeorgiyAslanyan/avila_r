@@ -25,16 +25,16 @@ const CartItem = ({ image, name, price, quantity, slug, _id }) => {
         <div className="flex pr-2 items-center justify-between">
           <p className="font-semibold">${price * quantity}</p>
           <div className="flex p-1  mr-3 rounded-xl border">
-            <button className="px-3" type="button" onClick={() => toggleCartItemQuantity(_id, 'dec')}>
+            <button className="px-3"   onClick={() => toggleCartItemQuantity(_id, 'dec')}>
               -
             </button>
             <p>{quantity}</p>
-            <button className="px-3" type="button" onClick={() => toggleCartItemQuantity(_id, 'inc')}>
+            <button className="px-3"   onClick={() => toggleCartItemQuantity(_id, 'inc')}>
               +
             </button>
           </div>
         </div>
-        <button type="button" className="absolute top-0 right-0 m-2" onClick={() => onRemove(_id)}>
+        <button   className="absolute top-0 right-0 m-2" onClick={() => onRemove(_id)}>
           <XMarkIcon
             width={20}
             className="hover:text-red-500 ease-in-out duration-150 hover:scale-125"

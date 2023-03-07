@@ -40,7 +40,7 @@ const Cart = () => {
         />
         <div className="z-20 md:col-span-1 lg:col-span-2 xl:col-span-1 bg-white p-5 sm:p-10 relative">
           <button
-            type="button"
+             
             onClick={() => setShowCart(false)}
             className="flex items-center"
           >
@@ -61,7 +61,7 @@ const Cart = () => {
                   <h3 className="font-semibold">${totalPrice}</h3>
                 </div>
                 <button
-                  type="button"
+                   
                   onClick={handleCheckout}
                   className="bg-red-500 text-white w-full rounded-xl py-2 uppercase"
                 >
@@ -75,7 +75,7 @@ const Cart = () => {
               <h3>Your shopping bag is empty</h3>
               <button
                 className="rounded-xl px-5 py-2 mt-3 hover:scale-110 ease-in-out duration-200 bg-red-500 text-white w-full"
-                type="button"
+                 
                 onClick={() => setShowCart(false)}
               >
                 Continue shopping

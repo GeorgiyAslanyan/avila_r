@@ -11,7 +11,7 @@ const Success = () => {
         <div>
           <button
             className="rounded-xl px-5 py-2 mt-3 hover:scale-110 ease-in-out duration-200 bg-red-500 text-white w-full"
-            type="button"
+             
           >
             Continue shopping
           </button>

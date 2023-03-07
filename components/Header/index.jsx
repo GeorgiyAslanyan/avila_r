@@ -52,7 +52,7 @@ const Header = () => {
           router.pathname !== "/canceled" && (
             <div
               onClick={onCategoryMenu}
-              type="button"
+               
               className="md:hidden flex h-10 items-center cursor-pointer"
             >
               {showCategories ? (

@@ -27,7 +27,7 @@ const GoodsDetails = ({ product, products }) => {
             <div className="flex p-2  mr-3 shadow-lg rounded-xl border mb-2.5">
               <button
                 className="px-3"
-                type="button"
+                 
                 onClick={decQty}
               >
                 -
@@ -35,7 +35,7 @@ const GoodsDetails = ({ product, products }) => {
               <p>{qty}</p>
               <button
                 className="px-3"
-                type="button"
+                 
                 onClick={incQty}
               >
                 +
@@ -47,12 +47,12 @@ const GoodsDetails = ({ product, products }) => {
           </div>
 
           <div className="grid presm:gap-8 gap-4 presm:grid-cols-2">
-            <button className="p-2.5 shadow-lg rounded-xl border" type="button" onClick={() => onAdd(product, qty)}>
+            <button className="p-2.5 shadow-lg rounded-xl border"   onClick={() => onAdd(product, qty)}>
               Add to cart
             </button>
             <button
               className="p-2.5 shadow-lg rounded-xl bg-red-600 text-white border"
-              type="button"
+               
               onClick={() => setShowCart(true)}
             >
               Byu Now
